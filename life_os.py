@@ -1,6 +1,8 @@
+import habit_tracker
+
 option = 0
 tasks = []
-answer_list = [1, 2, 3, 4, 5]
+answer_list = [1, 2, 3, 4, 5, 6]
 filename = "tasks.txt"
 # Load tasks from file if exists
 try:
@@ -67,11 +69,17 @@ def mark():
     except ValueError:
         print("Please enter a valid number.")
 
-while option != 5:
+def habits_run():
+    pass
+
+
+
+
+while option != 6:  # Update to include new option
     try:
-        option = int(input("\nEnter Choice\n1. View\n2. Add\n3. Delete\n4. Toggle\n5. Exit \n"))
-        if option not in answer_list:
-            print("Invalid input. Choose 1 to 5.")
+        option = int(input("\nEnter Choice\n1. View\n2. Add\n3. Delete\n4. Toggle\n5. Habit Tracker\n6. Exit\n"))
+        if option not in [1, 2, 3, 4, 5, 6]:
+            print("Invalid input. Choose 1 to 6.")
             continue
     except ValueError:
         print("Please enter a number.")
@@ -85,5 +93,7 @@ while option != 5:
         delete()
     elif option == 4:
         mark()
-    elif option == 5:
+    elif option == 6:
         print("Exiting... Goodbye!")
+    elif option == 5:
+        habit_tracker.run_habit_tracker()  # 👈 This is your habit module hook
